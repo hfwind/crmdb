@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="exampe" namespace="/" extends="struts-default">
+		<!--菜单 -->
+		<action name="sysnav" class="com.demo.action.SysnavAction"
+			method="findAllSysnav">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<!-- 登录 -->
+		<action name="login" class="com.demo.action.UserInfoAction"
+			method="login">
+			<result name="success" type="redirectAction">sysnav</result>
+			<result name="input">login.jsp</result>
+		</action>
+
+		<!-- 所有客户经理详情 -->
+		<action name="information" class="com.demo.action.CustomerAction"
+			method="getAllCustomer">
+			<result name="success">information.jsp</result>
+		</action>
+		
+		<!--客户管理分页-->
+		<action name="customerfenye" class="com.demo.action.CustomerAction" method="getAllHousing">
+			<result name="success">information.jsp</result>
+		</action>
+		
+		<!-- 客户经理详情多条件查询 -->
+         <action name="tiaojian" class="com.demo.action.CustomerAction" method="getCustomerToAjax">
+          <result name="success">information.jsp</result>
+         </action>
+
+		<!-- 销售机会 -->
+		<action name="Sale" class="com.demo.action.SaleChanceAction" method="getAllSaleChance">
+			<result name="success">Sale.jsp</result>
+		</action>
+         
+         <!-- 删除销售机会 -->
+         <action name="deleteSale" class="com.demo.action.SaleChanceAction" method="deletSale">
+          <result type="redirectAction">Sale</result>
+         </action>
+         
+          <!-- 分页查询所有销售机会 -->
+         <action name="fenSale" class="com.demo.action.SaleChanceAction" method="getAllSale">
+			<result name="success">Sale.jsp</result>
+		</action>
+		
+		<!-- 筛选查询销售机会 -->
+		 <action name="shaixuan" class="com.demo.action.SaleChanceAction" method="getSaleChanceToAjax">
+			 <result name="success">Sale.jsp</result>
+		</action>
+		
+		<!-- 查看销售机会详情 -->
+		<action name="salexiang" class="com.demo.action.SaleChanceAction" method="salexiang">
+			 <result name="success">salexiang.jsp</result>
+		</action>
+		<!-- 修改销售机会详情 -->
+		<action name="updateSale" class="com.demo.action.SaleChanceAction" method="updateSaleChance">
+			<result name="success" type="redirectAction">Sale</result>
+		</action>
+              
+         <!-- 添加销售机会 -->
+		<action name="addsale" class="com.demo.action.SaleChanceAction" method="addSale">
+			<result name="success" type="redirectAction">Sale</result>
+		</action>
+		
+		<!-- 根据销售计划ID查询-->
+		<action name="fen" class="com.demo.action.SaleChanceAction" method="salexiang">
+			<result name="success">updatesale.jsp</result>
+		</action>
+		
+         <!--分配销售计划 -->
+         <action name="fenxiaoshou" class="com.demo.action.SaleChanceAction" method="fenpeifuwu">
+            <result name="success" type="redirectAction">Sale</result>
+         </action>
+         
+		<!-- 客户流失 -->
+		<action name="loss" class="com.demo.action.CustomerLossAction"
+			method="findAllLoss">
+			<result name="success">Loss.jsp</result>
+		</action>
+		
+		<!-- 流失管理分页 -->
+		<action name="lossfenye" class="com.demo.action.CustomerLossAction" method="getAllHousing">
+			<result name="success">Loss.jsp</result>
+		</action>
+		
+		 <!-- 查询客户流失多条件 -->
+		<action name="losstiaojian" class="com.demo.action.CustomerLossAction" method="getCustomerToAjax">
+			<result name="success">Loss.jsp</result>
+		</action>
+		
+		<!-- 按id查询流失 -->
+		<action name="Byidliushi" class="com.demo.action.CustomerLossAction"
+			method="ByliushiAll">
+			<result name="success">liushi.jsp</result>
+		</action>
+		
+		<!-- 按id修改确认流失 -->
+		<action name="Byidliushiupda" class="com.demo.action.CustomerLossAction"
+			method="Byliushiupda">
+			<result type="redirectAction">loss</result>
+		</action>
+		
+		<!-- 按id修改暂缓流失 -->
+		<action name="Byidzanhuanupda" class="com.demo.action.CustomerLossAction"
+			method="Byzanhuanupda">
+			<result type="redirectAction">loss</result>
+		</action>
+		
+		<!-- 按id查询暂缓流失 -->
+		<action name="Byidzanhuan" class="com.demo.action.CustomerLossAction"
+			method="ByliushiAll">
+			<result name="success">zanhuan.jsp</result>
+		</action>
+		
+		<!-- 查询所有联系人 -->
+		<action name="Allperson" class="com.demo.action.ContextPersonAction"
+			method="PerAll">
+			<result name="success">kehuxinxilxr.jsp</result>
+		</action>
+		
+		<!-- 修改联系人 -->
+		<action name="Updaperson" class="com.demo.action.ContextPersonAction"
+			method="PerUpda">
+			<result type="redirectAction">information</result>
+		</action>
+		
+		<!-- 根据ID查询联系人 -->
+		<action name="ByIdPerson" class="com.demo.action.ContextPersonAction" method="getById">
+		 <result name="success">gailianxiren.jsp</result>
+		</action>
+		
+		<!-- 删除联系人 -->
+		<action name="Deleperson" class="com.demo.action.ContextPersonAction"
+			method="PerDele">
+			<result type="redirectAction">Allperson</result>
+		</action>
+				
+
+		<!-- 查询所有用户计划 -->
+		<action name="Development" class="com.demo.action.CustomerPlanAction"
+			method="findAllPlan">
+			<result name="success">Development.jsp</result>
+		</action>
+		
+		<!-- 开发用户计划 -->
+		<action name="kaifajihua" class="com.demo.action.CustomerPlanAction"
+			method="findAllPlan">
+			<result name="success">kaifajihua.jsp</result>
+		</action>
+		
+		<!--查询所有用户计划 分页 -->
+		<action name="DevelopmentPage" class="com.demo.action.CustomerPlanAction"
+			method="getPlan">
+			<result name="success">Development.jsp</result>
+		</action>
+				
+		<!--删除客户-->
+		<action name="deletecustomer" class="com.demo.action.CustomerAction" method="deleteCustomer">
+			<result name="success" type="redirectAction">information</result>
+		</action>
+		
+		<!-- 根据客户ID查询历史订单 -->
+		<action name="lishi" class="com.demo.action.BuyProductAction" method="getfindById">
+		   <result name="success">lishidingdan.jsp</result>
+		</action>
+		
+		<!-- 根据客户ID查询交往记录 -->
+		<action name="jiaowang" class="com.demo.action.ContextRecordAction" method="getconById">
+		 <result name="success">jiaowang.jsp</result>
+		</action>
+		
+		<!--删除交往记录-->
+		<action name="deleterecord" class="com.demo.action.ContextRecordAction" method="deleteRecord">
+		  <result type="redirectAction">information</result>
+		</action>
+		
+		<!-- 根据ID查询交往记录 -->
+		<action name="jiaowangid" class="com.demo.action.ContextRecordAction" method="getContextId">
+		   <result name="success">xiugaijiaowang.jsp</result>
+		</action>
+		
+		<!-- 修改交往记录 -->
+		<action name="xiujiao" class="com.demo.action.ContextRecordAction" method="xiugai">
+		   <result name="success" type="redirectAction">information</result>
+		</action>
+		
+		<!-- 删除销售机会 -->
+		<action name="delete" class="com.demo.action.CustomerPlanAction"
+			method="deletePlan">
+			<result type="chain">
+				<param name="actionName">Development</param>
+				<param name="saleId">${saleId}</param>
+			</result>
+		</action>
+		
+		<!-- 查询已分配的销售机会-->
+		<action name="salefen" class="com.demo.action.SaleChanceAction" method="getIdSaleChance">
+		   <result name="success">SaleId.jsp</result>
+		</action>
+		
+		<!-- 已分配的销售计划筛选查询 -->
+		 <action name="jihuashaixuan" class="com.demo.action.SaleChanceAction" method="getSaleChanceToAjaxfenpei">
+			 <result name="success">SaleId.jsp</result>
+		</action>
+		
+		<!--已分配的销售计划分页-->
+         <action name="jihuafenye" class="com.demo.action.SaleChanceAction" method="getAllSalefenye">
+			<result name="success">SaleId.jsp</result>
+		</action>
+		
+		<!-- 添加计划 -->
+		<action name="addPlan" class="com.demo.action.CustomerPlanAction"
+			method="addplan">
+			<result type="redirectAction">salefen</result>
+		</action>
+        
+        <!-- 服务分配查询 -->
+		<action name="FenService" class="com.demo.action.ServiceManagerAction" method="getAllServiceManager">
+			<result name="success">fenpeifuwu.jsp</result>
+		</action>
+		<!-- 分页服务分配查询 -->
+		<action name="fenyeService" class="com.demo.action.ServiceManagerAction" method="getserviceSize">
+			<result name="success">fenpeifuwu.jsp</result>
+		</action>
+		<!-- 筛选服务分配查询 -->
+		<action name="shaixuanService" class="com.demo.action.ServiceManagerAction" method="getServiceManagerToAjax">
+			<result name="success">fenpeifuwu.jsp</result>
+		</action>
+		<!-- 新建服务 -->
+		<action name="addfuwu" class="com.demo.action.ServiceManagerAction" method="addService">
+			  <result type="redirectAction">FenService</result>
+		</action>
+		<!-- 删除服务 -->
+		<action name="deleteService" class="com.demo.action.ServiceManagerAction" method="deletefuwu">
+			  <result type="redirectAction">FenService</result>
+		</action>
+		<!-- 分配服务 -->
+		<action name="xiugaifuwu" class="com.demo.action.ServiceManagerAction" method="updatefuwu">
+			  <result type="redirectAction">FenService</result>
+		</action>	
+		<!-- 处理服务(查询所有分配的服务) -->
+		<action name="chulifuwu" class="com.demo.action.ServiceManagerAction" method="getfenpeiService">
+			  <result name="success">chulifuwu.jsp</result>
+		</action>
+		<!-- 筛选已经的分配服务 -->
+		<action name="shaixuanfenpei" class="com.demo.action.ServiceManagerAction" method="getServiceManagerToAjax2">
+			  <result name="success">chulifuwu.jsp</result>
+		</action>
+		<!-- 查看详情处理服务(查询所有分配的服务) -->
+		<action name="xiangService" class="com.demo.action.ServiceManagerAction" method="chuliServiceXiang">
+			  <result name="success">chulixiang.jsp</result>
+		</action>
+		<!-- 处理服务(填写服务处理) -->
+		<action name="chufuwu" class="com.demo.action.ServiceManagerAction" method="chulijieguo">
+			  <result type="redirectAction">chulifuwu</result>
+		</action>
+		<!-- 反馈服务(查询所有处理的服务) -->
+		<action name="fankuifuwu" class="com.demo.action.ServiceManagerAction" method="getchuliservice">
+			  <result name="success">fankuifuwu.jsp</result>
+		</action>
+		<!-- 查看详情处理服务(查询所有处理完的服务) -->
+		<action name="chuliXiangService" class="com.demo.action.ServiceManagerAction" method="chuliwanServiceXiang">
+			  <result name="success">fankuixiang.jsp</result>
+		</action>
+		<!-- 处理服务(填写服务结果) -->
+		<action name="tianxiejieguo" class="com.demo.action.ServiceManagerAction" method="tianxiejieguo">
+			  <result type="redirectAction">fankuifuwu</result>
+		</action>
+		<!-- 归档服务(查询所有反馈的服务) -->
+		<action name="guidangfuwu" class="com.demo.action.ServiceManagerAction" method="getfankuiwanservice">
+			  <result name="success">guidangfuwu.jsp</result>
+		</action>
+		<!-- 查看归档服务详情(查询所有的服务详情) -->
+		<action name="guidangService" class="com.demo.action.ServiceManagerAction" method="getguidangService">
+			  <result name="success">guidangxiang.jsp</result>
+		</action>
+        
+		<!-- 查询数据字典 -->
+		<action name="Alldata" class="com.demo.action.DictionaryAction"
+			method="DataAll">
+			<result name="success">shujuzidian.jsp</result>
+		</action>
+		
+		<!-- 删除数据字典 -->
+		<action name="Deledata" class="com.demo.action.DictionaryAction"
+			method="DataDele">
+			<result type="redirectAction">Alldata</result>
+		</action>
+		
+		<!-- 添加数据字典 -->
+		<action name="Adddata" class="com.demo.action.DictionaryAction"
+			method="AddData">
+			<result type="redirectAction">Alldata</result>
+		</action>
+		
+		<!--数据字典查询菜单 -->
+		<action name="shujusysnav" class="com.demo.action.SysnavAction"
+			method="findAllSysnav">
+			<result name="success">xjshujuzidian.jsp</result>
+		</action>
+		
+		<!--按id查询数据字典单项 -->
+		<action name="ByidData" class="com.demo.action.DictionaryAction"
+			method="Byiddata">
+			<result name="success">xgshujuzidian.jsp</result>
+		</action>
+		
+		<!--按id修改单项 -->
+		<action name="Byidupda" class="com.demo.action.DictionaryAction"
+			method="DataUpda">
+			<result type="redirectAction">Alldata</result>
+		</action>
+		
+		<!-- 查询数据字典分页 -->
+		<action name="datafenye" class="com.demo.action.DictionaryAction" method="findAllData">
+			<result name="success">shujuzidian.jsp</result>
+		</action>
+		
+		 <!-- 查询数据字典多条件 -->
+		<action name="datatiaojian" class="com.demo.action.DictionaryAction" method="getCustomerToAjax">
+			<result name="success">shujuzidian.jsp</result>
+		</action>
+        
+        <!-- 查询产品信息 -->
+		<action name="product" class="com.demo.action.ProductAction"
+			method="getAllProduct">
+			<result name="success">product.jsp</result>
+		</action>
+		
+		<action name="Stock" class="com.demo.action.ProductAction"
+			method="getAllProduct">
+			<result name="success">warehouse.jsp</result>
+		</action>
+		<!-- 分页查询产品信息 -->
+		<action name="findAllproductpage" class="com.demo.action.ProductAction"
+			method="getProductPage">
+			<result name="success">product.jsp</result>
+		</action>
+		
+		<action name="findAllproductpage2" class="com.demo.action.ProductAction"
+			method="getProductPage">
+			<result name="success">warehouse.jsp</result>
+		</action>
+		<!-- 筛选查询产品信息 -->
+		<action name="getProductToAjaxfenpei" class="com.demo.action.ProductAction"
+			method="getProductToAjaxfenpei">
+			<result name="success">product.jsp</result>
+		</action>
+		
+		<action name="getProductToAjaxpei" class="com.demo.action.ProductAction"
+			method="getchangkushaixuan">
+			<result name="success">warehouse.jsp</result>
+		</action>
+		
+		 <!-- 查询流失分析 -->
+		<action name="Lossanalysis" class="com.demo.action.LossfenxiAction" method="GetAll">
+			<result name="success">Lossfenxi.jsp</result>
+		</action>
+		
+		<!-- 查询流失分析多条件查询 -->
+		<action name="lossfenxiduo" class="com.demo.action.LossfenxiAction" method="getCustomerToAjax">
+			<result name="success">Lossfenxi.jsp</result>
+		</action>
+		
+		<!-- 流失分析分页 -->
+		<action name="lossfenxifenye" class="com.demo.action.LossfenxiAction" method="getAllHousing">
+			<result name="success">Lossfenxi.jsp</result>
+		</action>
+        
+        <!--查询角色-->
+        <action name="Systemuser" class="com.demo.action.RoleInfoAction" method="findAllRole">
+          <result name="success">addSysnav.jsp</result>
+        </action>
+        
+        <!--添加权限-->
+        <action name="addPower" class="com.demo.action.PowerAction" method="addpower">
+           <result name="success" type="redirectAction">sysnav</result>
+        </action>
+        
+        <!-- 查询所有职工 -->
+        <action name="SystUser" class="com.demo.action.UserInfoAction" method="getAllUser">
+          <result name="success">findUser.jsp</result>
+        </action>
+        
+        <!-- 根据ID删除职工 -->
+        <action name="deleteuser" class="com.demo.action.UserInfoAction" method="deleteaa">
+          <result name="success" type="redirectAction">SystUser</result>
+        </action>
+        
+        <!-- 根据ID查询职工 -->
+        <action name="userById" class="com.demo.action.UserInfoAction" method="getById">
+          <result name="success">userId.jsp</result>
+        </action>
+      
+       <!--修改用户 -->
+        <action name="xiuuser" class="com.demo.action.UserInfoAction" method="updateUser">
+          <result name="success" type="redirectAction">SystUser</result>
+        </action>
+
+        <!--查询所有职位 -->
+        <action name="getrole" class="com.demo.action.UserInfoAction" method="getAllRole">
+          <result name="success">adduser.jsp</result>
+        </action>
+        
+        <!--添加用户 -->
+        <action name="addUser" class="com.demo.action.UserInfoAction" method="addUserInfo">
+          <result name="success" type="redirectAction">SystUser</result>
+        </action>
+        
+          <!-- 客户管理信息修改查询-->
+         <action name="cusidchaxun" class="com.demo.action.CustomerAction" method="ByidAll">
+          <result name="success">xgkehuxinxi.jsp</result>
+         </action>
+         
+          <!-- 客户管理信息修改-->
+         <action name="cuupdate" class="com.demo.action.CustomerAction" method="Cusupda">
+          <result name="success" type="redirectAction">information</result>
+         </action>
+        
+        <!-- 统计报表(贡献分析) -->
+		<action name="gongxian" class="com.demo.action.BuyProductAction" method="getProduct">
+			  <result name="success">gongxian.jsp</result>
+		</action>
+		 <!-- 筛选统计报表(贡献分析) -->
+		 <action name="shaixuangongxian" class="com.demo.action.BuyProductAction" method="shaixuangongxian">
+			  <result name="success">gongxian.jsp</result>
+		</action>
+		<!-- 统计报表(服务分析) -->
+		<action name="fuwufenxi" class="com.demo.action.ServiceManagerAction" method="getfuwufenxi">
+			  <result name="success">fuwufenxi.jsp</result>
+		</action>
+		<!-- 统计报表(构成分析) -->
+		<action name="goucheng" class="com.demo.action.CustomerAction" method="getallgoucheng">
+			  <result name="success">goucheng.jsp</result>
+		</action>
+        
+        <action name="getBuy" class="com.demo.action.BuyProductAction"
+			method="getBuyProduct">
+			<result name="success">buyproduct.jsp</result>
+		</action>
+		
+		<!-- 终止开发 -->
+		<action name="zhonzhi" class="com.demo.action.SaleChanceAction" method="zhonzhijihua">
+		  <result name="success" type="redirectAction">salefen</result>
+		</action>
+		
+		<!-- 开发成功 -->
+		<action name="kaifaok" class="com.demo.action.SaleChanceAction" method="kaifaok">
+		   <result name="success" type="redirectAction">salefen</result>
+		</action>
+		
+		<!-- 筛选服务-->
+		<action name="shaixuanserver" class="com.demo.action.ServiceManagerAction" method="getServiceManager">
+		   <result name="success">guidangfuwu.jsp</result>
+		</action>
+	</package>
+</struts>    
